@@ -1,0 +1,12 @@
+[tasks.wasm-build]
+install_crate = "wasm-pack"
+command = "wasm-pack"
+args = ["build", "--target", "web"]
+
+[tasks.cp-pkg]
+workspace = false
+command = "cp"
+args = ["-rf", "./pkg", "../ext-ff"]
+
+[tasks.build]
+dependencies = ["wasm-build", "cp-pkg"]
